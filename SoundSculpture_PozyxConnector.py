@@ -57,5 +57,4 @@ client.subscribe(topic)
 try:
     client.loop_forever()
 except KeyboardInterrupt as e :
-    print("All ids")
     print("[EXIT]")
