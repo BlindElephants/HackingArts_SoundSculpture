@@ -24,7 +24,6 @@ def on_connect(client, userdata, flags, rc):
     print(mqtt.connack_string(rc))
 
 def on_message(client, userdata, msg):
-    #print("Received msg")
     tag_data = json.loads(msg.payload.decode())
 
     try:
@@ -58,4 +57,5 @@ client.subscribe(topic)
 try:
     client.loop_forever()
 except KeyboardInterrupt as e :
+    print("All ids")
     print("[EXIT]")
