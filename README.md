@@ -45,7 +45,7 @@ The minimum and maximum values for position data (both X and Y) is determined by
 
 Arguments can be provided to the script to point connections in the correct direction.
 
-```--pozyxGatewayAddr``` accepts an IP address. This is the IP address of the Pozyx Gateway on the local network. Defaults to "192.168.0.22"
+```--pozyxGatewayAddr``` accepts an IP address. This is the IP address of the Pozyx Gateway on the local network. Defaults to "192.168.1.168"
 
 ```--targetAddr``` accepts an IP address. This is the IP address of the application that needs Pozyx position data. By default, this is "localhost"
 
