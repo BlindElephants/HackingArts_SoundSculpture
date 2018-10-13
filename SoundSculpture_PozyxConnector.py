@@ -6,7 +6,7 @@ from pythonosc import udp_client
 import argparse
 
 parser = argparse.ArgumentParser("\n\nPozyx MQTT Subscription -> OSC output script.\nThis script will subscribe to the MQTT feed on the Pozyx gateway machine (locally, via WiFi) and forward Pozyx related data over OSC to a targeted destination.\nThis script requires libraries: paho-mqtt, python-osc (Install via pip)\nCreated to run on Python 3 (created and tested with Python 3.6, 3.7).\n")
-parser.add_argument("--pozyxGatewayAddr", default="192.168.0.22", help="This is the IP Address of the Pozyx Gateway machine on the LAN. [Default = \"192.168.0.22\"]")
+parser.add_argument("--pozyxGatewayAddr", default="192.168.1.168", help="This is the IP Address of the Pozyx Gateway machine on the LAN. [Default = \"192.168.0.22\"]")
 parser.add_argument("--targetAddr", default="localhost", help="This is the IP Address of the target machine [Default = \"localhost\"]")
 parser.add_argument("--targetPort", default=3333, help="This is the Port of the target machine [Default = 3333]")
 parser.add_argument("--printDebug", action="store_true", help="If called, all debug info will be printed to terminal (Tag IDs and position data)")
@@ -30,8 +30,7 @@ def on_message(client, userdata, msg):
     try:
         network_id = tag_data["tagId"]
         position   = tag_data["data"]["coordinates"]
-        if(args.printDebug):
-            print("Received ID: {}, position {}".format(network_id, position))
+        if args.printDebug: print("Received ID: {}, position {}".format(network_id, position))
         msg_builder = osc_message_builder.OscMessageBuilder("/position")
         msg_builder.add_arg(int(network_id), "i")
         msg_builder.add_arg(int(position["x"]), "i")
@@ -56,4 +55,7 @@ client.on_subscribe = on_subscribe
 client.connect(host, port=port)
 client.subscribe(topic)
 
-client.loop_forever()
+try:
+    client.loop_forever()
+except KeyboardInterrupt as e :
+    print("[EXIT]")
