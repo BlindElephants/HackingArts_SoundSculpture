@@ -1,11 +1,22 @@
-# SoundSculpture_PozyxConnector
-
-This script will subscribe to the MQTT feed on the Pozyx gateway machine (locally, via WiFi) and forward Pozyx related data over OSC to a target destination (i.e., your app)
+# First
 
 ## Connect to the SoundSculpture WIFI
 
-SSID: soundSculpture_WIFI
-PWD: soundSculpture_WIFI_2018
+- SSID: soundSculpture_WIFI
+- PWD: soundSculpture_WIFI_2018
+
+## Hardware Addresses
+
+In the file __HardwareAddresses.txt__ is a list of addresses for communicating with the LED hardware, as well as the Pozyx positioning system.
+
+Each line represents a single cube:
+- Index (as written on the bottom of the cube)
+- IP address to send messages to the LED hardware
+- Identifier for the Pozyx positioning system
+
+# SoundSculpture_PozyxConnector
+
+This script will subscribe to the MQTT feed on the Pozyx gateway machine (locally, via WiFi) and forward Pozyx related data over OSC to a target destination (i.e., your app)
 
 ## Dependencies
 
