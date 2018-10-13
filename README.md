@@ -2,6 +2,11 @@
 
 This script will subscribe to the MQTT feed on the Pozyx gateway machine (locally, via WiFi) and forward Pozyx related data over OSC to a target destination (i.e., your app)
 
+## Connect to the SoundSculpture WIFI
+
+SSID: soundSculpture_WIFI
+PWD: soundSculpture_WIFI_2018
+
 ## Dependencies
 
 - paho-mqtt
